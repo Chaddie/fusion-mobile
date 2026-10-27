@@ -1,5 +1,6 @@
 import { Banner, Empty, PageHeader, Pill } from "@/components/ui";
 import { countLabel, formatWhen, labelize, timeAgo } from "@/lib/format";
+import type { CaseRecord } from "@/lib/products";
 import { SophosError, sophos } from "@/lib/sophos";
 import { requireSession } from "@/lib/session";
 import type { Alert, Endpoint, Page } from "@/lib/types";
@@ -13,19 +14,23 @@ function problem(error: unknown): string {
 
 export default async function HomePage() {
   const session = await requireSession();
-  const [alertsResult, highResult, badResult, devicesResult] = await Promise.allSettled([
+  const [alertsResult, highResult, badResult, devicesResult, casesResult] = await Promise.allSettled([
     sophos<Page<Alert>>(session, "/common/v1/alerts", { query: { pageSize: 5 } }),
     sophos<Page<Alert>>(session, "/common/v1/alerts", { query: { pageSize: 20, severity: "high", pageTotal: true } }),
     sophos<Page<Endpoint>>(session, "/endpoint/v1/endpoints", {
       query: { pageSize: 5, healthStatus: "bad", view: "summary", pageTotal: true },
     }),
     sophos<Page<Endpoint>>(session, "/endpoint/v1/endpoints", { query: { pageSize: 50, view: "basic", pageTotal: true } }),
+    sophos<Page<CaseRecord>>(session, "/cases/v1/cases", {
+      query: { pageSize: 5, status: "actionRequired", pageTotal: true },
+    }),
   ]);
 
   const alerts = alertsResult.status === "fulfilled" ? alertsResult.value : null;
   const high = highResult.status === "fulfilled" ? highResult.value : null;
   const bad = badResult.status === "fulfilled" ? badResult.value : null;
   const devices = devicesResult.status === "fulfilled" ? devicesResult.value : null;
+  const cases = casesResult.status === "fulfilled" ? casesResult.value : null;
   const failure = [alertsResult, highResult, badResult, devicesResult].find((result) => result.status === "rejected");
   const tenantName = alerts?.items?.find((item) => item.tenant?.name)?.tenant?.name;
 
@@ -45,6 +50,10 @@ export default async function HomePage() {
         <a className="stat" href="/alerts">
           <span className="stat-value">{alerts ? countLabel(alerts.items, alerts.pages) : "—"}</span>
           <span className="stat-label">Latest alerts</span>
+        </a>
+        <a className="stat" href="/cases?status=actionRequired">
+          <span className="stat-value">{cases ? countLabel(cases.items, cases.pages) : "—"}</span>
+          <span className="stat-label">Cases needing action</span>
         </a>
         <a className="stat" href="/devices">
           <span className="stat-value">{devices ? countLabel(devices.items, devices.pages) : "—"}</span>

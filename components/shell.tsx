@@ -4,16 +4,25 @@ import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 import { Mark } from "@/components/ui";
 
+const moreRoots = [
+  "/more",
+  "/settings",
+  "/groups",
+  "/device-groups",
+  "/people",
+  "/detections",
+  "/policies",
+  "/phones",
+  "/email",
+  "/firewalls",
+];
+
 const tabs = [
   { href: "/home", label: "Home", match: (path: string) => path === "/home" },
   { href: "/alerts", label: "Alerts", match: (path: string) => path.startsWith("/alerts") },
+  { href: "/cases", label: "Cases", match: (path: string) => path.startsWith("/cases") },
   { href: "/devices", label: "Devices", match: (path: string) => path.startsWith("/devices") },
-  { href: "/people", label: "People", match: (path: string) => path.startsWith("/people") },
-  {
-    href: "/more",
-    label: "More",
-    match: (path: string) => ["/more", "/settings", "/groups", "/device-groups"].some((item) => path.startsWith(item)),
-  },
+  { href: "/more", label: "More", match: (path: string) => moreRoots.some((item) => path.startsWith(item)) },
 ];
 
 function Icon({ name }: { name: string }) {
@@ -41,13 +50,11 @@ function Icon({ name }: { name: string }) {
       </svg>
     );
   }
-  if (name === "People") {
+  if (name === "Cases") {
     return (
       <svg viewBox="0 0 24 24" aria-hidden="true">
-        <circle {...common} cx="9" cy="9" r="3" />
-        <path {...common} d="M4.5 19c.6-2.4 2.4-3.5 4.5-3.5s3.9 1.1 4.5 3.5" />
-        <circle {...common} cx="17" cy="9.5" r="2.2" />
-        <path {...common} d="M16.2 15.6c1.6.2 2.8 1.1 3.3 3" />
+        <path {...common} d="M4 8.5h16v10a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 18.5v-10Z" />
+        <path {...common} d="M8 8.5V6.8A1.8 1.8 0 0 1 9.8 5h4.4A1.8 1.8 0 0 1 16 6.8v1.7" />
       </svg>
     );
   }

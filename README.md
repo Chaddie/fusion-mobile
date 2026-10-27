@@ -1,18 +1,25 @@
 # Fusion Mobile
 
-Phone-first console for a Sophos Fusion tenant (formerly Sophos Central). It talks to the [Sophos Fusion APIs](https://developer.sophos.com/) so you can read alerts and devices, act on alerts, isolate or delete endpoints, and create, update, or delete directory people and groups.
+Phone-first console for a Sophos Fusion tenant (formerly Sophos Central). It talks to the [Sophos Fusion APIs](https://developer.sophos.com/) so you can work with alerts, cases, detections, policies, devices, mobile, email, and firewalls from a phone.
 
-This is an unofficial companion. It is not affiliated with Sophos Ltd.
+This is an unofficial companion. It is not affiliated with Sophos Ltd. The mark is original. It does not use the Sophos logo.
 
 ## What you can do
 
-- Home: high alerts and devices in bad health
+- Home: high alerts, devices in bad health, and cases that need action
 - Alerts: filter by severity and product, then run the actions Sophos allows
+- Cases: create and update investigations, and open the detections on a case
+- Detections: the last 24 hours of SIEM events
 - Devices: search, scan, isolate or release, turn tamper protection on or off, rotate a tamper password, delete
-- People: search, add, edit, and delete custom directory users
-- People groups and device groups: create, rename, add or remove members, delete empty custom groups
+- Policies: create endpoint and server policies, enable them, and change individual settings
+- Phones: Sophos Mobile devices, scan results, sync, scan, locate, lock, message, unenroll, and wipe
+- Email: mailboxes, and quarantine search, release, and delete
+- Firewalls: list, rename, delete, and manage firewall groups
+- People and groups: directory users, people groups, and device groups
 
 Synced Active Directory, Microsoft Entra, and Google records stay read-only here. Sophos expects those changes in the source directory.
+
+Mobile, Email, Firewall, and Cases only return data when that product is turned on for the tenant. Sophos Mobile itself is offered in a subset of regions.
 
 ## Connect a tenant
 

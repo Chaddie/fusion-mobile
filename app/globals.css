@@ -26,6 +26,8 @@
 html, body { margin: 0; padding: 0; }
 body {
   font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.5;
   color: var(--ink);
   background: #e7eaf3;
   min-height: 100dvh;
@@ -33,9 +35,15 @@ body {
 a { color: inherit; }
 button, input, select, textarea { font: inherit; }
 h1, h2, h3, p { margin: 0; }
-h1, .wordmark {
+h1, h2, h3 {
+  font-family: var(--font);
+  font-weight: 650;
+  letter-spacing: -0.022em;
+}
+.wordmark, .hero h1 {
   font-family: var(--display);
-  letter-spacing: -0.045em;
+  font-weight: 500;
+  letter-spacing: -0.02em;
 }
 :focus-visible {
   outline: 3px solid var(--accent);
@@ -83,9 +91,9 @@ h1, .wordmark {
   gap: 10px;
   text-decoration: none;
   color: white;
-  font-family: var(--display);
+  font-family: var(--font);
   font-weight: 600;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
 }
 .region {
   border: 1px solid rgba(255, 255, 255, 0.28);
@@ -135,7 +143,7 @@ h1, .wordmark {
   gap: 12px;
   margin-bottom: 16px;
 }
-.page-head h1 { font-size: 1.7rem; line-height: 1.15; }
+.page-head h1 { font-size: 1.65rem; line-height: 1.2; font-weight: 650; }
 .lede, .fine-print { color: var(--muted); line-height: 1.45; }
 .lede { margin-top: 6px; }
 .stack { display: grid; gap: 12px; }
@@ -177,7 +185,7 @@ h1, .wordmark {
   min-height: 96px;
   align-content: space-between;
 }
-.stat-value { font-family: var(--display); font-size: 1.8rem; letter-spacing: -0.05em; }
+.stat-value { font-size: 1.7rem; letter-spacing: -0.03em; font-weight: 650; }
 .section-title {
   display: flex;
   align-items: baseline;
@@ -350,9 +358,9 @@ h1, .wordmark {
   font-size: 0.72rem;
   color: #c9d0ea;
 }
-.wordmark { font-size: 1.35rem; font-weight: 650; }
+.wordmark { font-size: clamp(1.7rem, 5vw, 2.15rem); font-weight: 500; }
 .wordmark span { color: #8f97ff; }
-.hero h1 { font-size: clamp(2rem, 8vw, 3.4rem); line-height: 1.02; max-width: 12ch; margin: 22px 0 12px; }
+.hero h1 { font-size: clamp(2.5rem, 9vw, 4rem); line-height: 1.05; max-width: 14ch; margin: 22px 0 12px; }
 .hero-copy { max-width: 38ch; color: #d5dcf3; line-height: 1.5; }
 .hero-points { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
 .hero-points li {
@@ -369,7 +377,7 @@ h1, .wordmark {
   margin-top: -24px;
   padding: 22px 20px calc(28px + env(safe-area-inset-bottom));
 }
-.sheet h2 { font-family: var(--display); letter-spacing: -0.04em; font-size: 1.45rem; }
+.sheet h2 { letter-spacing: -0.02em; font-size: 1.35rem; font-weight: 650; }
 .fine-print { margin-top: 8px; font-size: 0.85rem; }
 .fine-print a { color: var(--accent); }
 details.more { margin-top: 8px; }

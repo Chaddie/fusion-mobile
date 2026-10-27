@@ -32,12 +32,12 @@ export function ConnectForm({
           </div>
           <h1>Your tenant, built for a phone.</h1>
           <p className="hero-copy">
-            Review alerts, isolate a device, update people, and tidy groups without the desktop console.
+            Alerts, cases, policies, devices, phones, email, and firewalls, without the desktop console.
           </p>
           <ul className="hero-points">
-            <li>Read and act on alerts</li>
-            <li>Scan, isolate, or remove devices</li>
-            <li>Add, edit, and delete people and groups</li>
+            <li>Act on alerts and cases</li>
+            <li>Change policies and quarantine</li>
+            <li>Work with devices, phones, and firewalls</li>
           </ul>
         </div>
       </section>

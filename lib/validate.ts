@@ -1,11 +1,42 @@
 import { ALERT_ACTIONS, ENDPOINT_TYPES, HEALTH, SEVERITIES, SOURCE_TYPES, type AlertAction } from "@/lib/constants";
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-const PAGE_KEY_RE = /^[A-Za-z0-9+/=_-]{1,512}$/;
+const PAGE_KEY_RE = /^[A-Za-z0-9+/=_-]{1,2048}$/;
+const CASE_ID_RE = /^[A-Za-z0-9]+-[A-Za-z0-9]+$/;
 const ENDPOINT_GROUP_TEXT_RE = /^[^#,+"\\<>;]+$/;
 
 export function isUuid(value: string): boolean {
   return UUID_RE.test(value);
+}
+
+export function isCaseId(value: string): boolean {
+  return value.length <= 80 && CASE_ID_RE.test(value);
+}
+
+export function isDetectionId(value: string): boolean {
+  return /^[A-Za-z0-9_-]{1,150}$/.test(value);
+}
+
+export function cursorOf(value: string | undefined): string | undefined {
+  if (!value || value.length > 8000 || /[\u0000-\u001f\s]/.test(value)) return undefined;
+  return value;
+}
+
+export function policyNameOf(value: string): string | null {
+  const name = value.replace(/[\u0000-\u001f]/g, "").trim();
+  if (name.length < 1 || name.length > 100 || !/^\S(?:.*\S)?$/.test(name)) return null;
+  return name;
+}
+
+export function settingKeyOf(value: string): string | null {
+  if (!/^[A-Za-z0-9._/-]{1,160}$/.test(value)) return null;
+  return value;
+}
+
+export function shortName(value: string, min: number, max: number): string | null {
+  const name = value.replace(/[\u0000-\u001f]/g, "").trim();
+  if (name.length < min || name.length > max) return null;
+  return name;
 }
 
 export function text(formData: FormData, key: string): string {

@@ -3,7 +3,7 @@ import { Inter, Lexend_Exa } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const display = Lexend_Exa({ subsets: ["latin"], weight: ["500", "600", "700"], variable: "--font-display" });
+const display = Lexend_Exa({ subsets: ["latin"], weight: ["500", "600"], variable: "--font-display" });
 
 export const metadata: Metadata = {
   title: { default: "Fusion Mobile", template: "%s · Fusion Mobile" },
@@ -22,8 +22,8 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} ${display.variable}`}>{children}</body>
+    <html lang="en" className={`${inter.variable} ${display.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }

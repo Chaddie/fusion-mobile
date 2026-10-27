@@ -154,7 +154,15 @@ export async function sophos<T>(
   path: string,
   init?: { method?: string; query?: Query; body?: unknown },
 ): Promise<T> {
-  if (!path.startsWith("/common/v1/") && !path.startsWith("/endpoint/v1/")) {
+  const allowed =
+    path.startsWith("/common/v1/") ||
+    path.startsWith("/endpoint/v1/") ||
+    path.startsWith("/cases/v1/") ||
+    path.startsWith("/siem/v1/") ||
+    path.startsWith("/mobile/v1/") ||
+    path.startsWith("/email/v1/") ||
+    path.startsWith("/firewall/v1/");
+  if (!allowed) {
     throw new SophosError(400, "That Sophos API path is not available in this app.");
   }
   if (path.includes("..") || path.includes("://") || path.includes("\\")) {
