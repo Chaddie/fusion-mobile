@@ -94,7 +94,8 @@ export function ConnectForm({
             </form>
           ) : null}
           <p className="fine-print">
-            Unofficial companion for your own tenant. Not affiliated with Sophos Ltd. API use follows the{" "}
+            This is a personal project for your own tenant. It is not officially affiliated with Sophos, and it has
+            nothing to do with Sophos Ltd. API use follows the{" "}
             <a href="https://developer.sophos.com/getting-started-tenant/" target="_blank" rel="noreferrer">
               Sophos Fusion API
             </a>

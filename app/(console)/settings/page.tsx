@@ -38,8 +38,8 @@ export default async function SettingsPage() {
         </SubmitButton>
       </form>
       <p className="fine-print">
-        Unofficial companion. Colours and type follow the public Sophos site: navy #0A143A, blue #2006F7, Lexend Exa and Inter.
-        Not affiliated with Sophos Ltd.
+        This is a personal project. Colours and type follow the public Sophos site: navy #0A143A, blue #2006F7, Lexend Exa
+        and Inter. It is not officially affiliated with Sophos, and it has nothing to do with Sophos Ltd.
       </p>
     </div>
   );
