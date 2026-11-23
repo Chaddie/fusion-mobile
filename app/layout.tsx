@@ -7,7 +7,8 @@ const display = Lexend_Exa({ subsets: ["latin"], weight: ["500", "600"], variabl
 
 export const metadata: Metadata = {
   title: { default: "Fusion Mobile", template: "%s · Fusion Mobile" },
-  description: "Phone-first console for a Sophos Fusion tenant.",
+  description:
+    "Personal project: a phone-first console for a Sophos Fusion tenant. Not officially affiliated with Sophos.",
   applicationName: "Fusion Mobile",
   robots: { index: false, follow: false },
   appleWebApp: { capable: true, title: "Fusion", statusBarStyle: "black-translucent" },

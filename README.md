@@ -2,7 +2,7 @@
 
 Phone-first console for a Sophos Fusion tenant (formerly Sophos Central). It talks to the [Sophos Fusion APIs](https://developer.sophos.com/) so you can work with alerts, cases, detections, policies, devices, mobile, email, and firewalls from a phone.
 
-This is an unofficial companion. It is not affiliated with Sophos Ltd. The mark is original. It does not use the Sophos logo.
+This is a personal project. It is not officially affiliated with Sophos, and it has nothing to do with Sophos Ltd. The mark is original. It does not use the Sophos logo.
 
 ## What you can do
 

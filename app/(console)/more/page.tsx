@@ -28,6 +28,9 @@ export default function MorePage() {
           </a>
         ))}
       </div>
+      <p className="fine-print">
+        This is a personal project. It is not officially affiliated with Sophos, and it has nothing to do with Sophos Ltd.
+      </p>
     </div>
   );
 }

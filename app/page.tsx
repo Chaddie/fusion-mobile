@@ -42,6 +42,10 @@ export default async function ConnectPage({
                 Sign out
               </SubmitButton>
             </form>
+            <p className="fine-print">
+              This is a personal project. It is not officially affiliated with Sophos, and it has nothing to do with Sophos
+              Ltd.
+            </p>
           </div>
         </section>
       </main>
